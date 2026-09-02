@@ -56,7 +56,6 @@ function EmailPage() {
       return;
     }
     setBusy(true);
-    console.log("RUN start");
     try {
       const out = (await generate({
         data: { kind: "email", context, recipient, tone, length },
@@ -64,7 +63,6 @@ function EmailPage() {
       setResult(out);
       setEditing(false);
     } catch (e) {
-      console.log("RUN error", String(e));
       toast.error(e instanceof Error ? e.message : "Generation failed.");
     } finally {
       setBusy(false);
