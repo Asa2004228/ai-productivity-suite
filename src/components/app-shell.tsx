@@ -7,6 +7,7 @@ import {
   Bookmark,
   Settings,
   LifeBuoy,
+  ShieldCheck,
   Menu,
   X,
 } from "lucide-react";
@@ -18,6 +19,7 @@ const nav = [
   { to: "/planner", label: "AI Task Planner", icon: CalendarClock },
   { to: "/research", label: "AI Research Assistant", icon: BookOpenText },
   { to: "/saved", label: "Saved Outputs", icon: Bookmark },
+  { to: "/responsible-ai", label: "Responsible AI", icon: ShieldCheck },
   { to: "/settings", label: "Settings", icon: Settings },
   { to: "/help", label: "Help & Support", icon: LifeBuoy },
 ] as const;
