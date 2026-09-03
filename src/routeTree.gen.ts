@@ -14,6 +14,7 @@ import { Route as EmailRouteImport } from './routes/email'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as ResponsibleAiRouteImport } from './routes/responsible-ai'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SettingsRouteImport } from './routes/settings'
 
@@ -42,6 +43,11 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResponsibleAiRoute = ResponsibleAiRouteImport.update({
+  id: '/responsible-ai',
+  path: '/responsible-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SavedRoute = SavedRouteImport.update({
   id: '/saved',
   path: '/saved',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/help': typeof HelpRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/responsible-ai': typeof ResponsibleAiRoute
   '/saved': typeof SavedRoute
   '/settings': typeof SettingsRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/help': typeof HelpRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/responsible-ai': typeof ResponsibleAiRoute
   '/saved': typeof SavedRoute
   '/settings': typeof SettingsRoute
 }
@@ -78,16 +86,31 @@ export interface FileRoutesById {
   '/help': typeof HelpRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/responsible-ai': typeof ResponsibleAiRoute
   '/saved': typeof SavedRoute
   '/settings': typeof SettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/email' | '/help' | '/planner' | '/research' | '/saved' | '/settings'
+    | '/'
+    | '/email'
+    | '/help'
+    | '/planner'
+    | '/research'
+    | '/responsible-ai'
+    | '/saved'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/email' | '/help' | '/planner' | '/research' | '/saved' | '/settings'
+    | '/'
+    | '/email'
+    | '/help'
+    | '/planner'
+    | '/research'
+    | '/responsible-ai'
+    | '/saved'
+    | '/settings'
   id:
     | '__root__'
     | '/'
@@ -95,6 +118,7 @@ export interface FileRouteTypes {
     | '/help'
     | '/planner'
     | '/research'
+    | '/responsible-ai'
     | '/saved'
     | '/settings'
   fileRoutesById: FileRoutesById
@@ -105,6 +129,7 @@ export interface RootRouteChildren {
   HelpRoute: typeof HelpRoute
   PlannerRoute: typeof PlannerRoute
   ResearchRoute: typeof ResearchRoute
+  ResponsibleAiRoute: typeof ResponsibleAiRoute
   SavedRoute: typeof SavedRoute
   SettingsRoute: typeof SettingsRoute
 }
@@ -146,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/responsible-ai': {
+      id: '/responsible-ai'
+      path: '/responsible-ai'
+      fullPath: '/responsible-ai'
+      preLoaderRoute: typeof ResponsibleAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/saved': {
       id: '/saved'
       path: '/saved'
@@ -169,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   HelpRoute: HelpRoute,
   PlannerRoute: PlannerRoute,
   ResearchRoute: ResearchRoute,
+  ResponsibleAiRoute: ResponsibleAiRoute,
   SavedRoute: SavedRoute,
   SettingsRoute: SettingsRoute,
 }
